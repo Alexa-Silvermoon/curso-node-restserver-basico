@@ -1,6 +1,7 @@
 
 const express = require('express');// servidor express
 const cors = require('cors'); //autoriza o no paginas web que entren a mi server
+const { dbConnection } = require('../database/config.js');
 
 class Server {
 
@@ -12,6 +13,9 @@ class Server {
 
         this.usuariosPath = '/api/usuarios';
 
+        // Conectar a Base de Datos
+        this.conectarDB();
+
         // Middlewares es una funcion que se ejecuta cada vez que levantamos el servidor
         this.middlewares();
 
@@ -20,7 +24,12 @@ class Server {
 
     }
 
-    middlewares(){
+    async conectarDB(){
+
+        await dbConnection();
+    }
+
+    middlewares(){ //funcion que se ejecuta antes de llamar a un controlador o seguir con ejecucion de peticiones
 
         // CORS
         this.app.use( cors());

@@ -13,6 +13,9 @@ node app.js    o bien     nodemon app.js
 
 VERIFICAR EN CHROME O EN POSTMAN EL LOCALHOST:
 ```
+GET O POST http://localhost:8080/api/usuarios/
+PUT O DELETE http://localhost:8080/api/usuarios/XXXX ID XXXX
+
 http://localhost:8080/
 http://localhost:8080/api/usuarios?q=hola&nombre=alexander&apikey=123
 http://localhost:8080/api/usuarios?q=hola&apikey=123
