@@ -52,8 +52,10 @@ const UsuarioSchema = Schema({
 UsuarioSchema.methods.toJSON = function() { //debe ser una funcion normal ya que usaremos objeto this adentro
     //el this hace referencia a la instancia creada
 
-    const { __v, password, ...usuario } = this.toObject(); // __v y password se almacenara en usuario
+    const { __v, password, _id, ...usuario } = this.toObject(); // __v y password se almacenara en usuario
     // __v = version     ,     ... = operador rest
+
+    usuario.uid = _id; // modificacion visual de _id a uid y asi se vera en  postman
 
     // la version esta en la respuesta de postman
 

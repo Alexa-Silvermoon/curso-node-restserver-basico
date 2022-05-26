@@ -8,10 +8,10 @@ class Server {
     constructor(){
 
         this.app = express();
-
         this.port = process.env.PORT; //desde app.js require('dotenv').config();// trae los del archivo .env
 
         this.usuariosPath = '/api/usuarios';
+        this.authPath     = '/api/auth';
 
         // Conectar a Base de Datos
         this.conectarDB();
@@ -45,6 +45,7 @@ class Server {
 
     routes(){
 
+        this.app.use( this.authPath, require('../routes/auth.js'));
         this.app.use( this.usuariosPath, require('../routes/usuarios.js'));
 
     }

@@ -228,6 +228,8 @@ const usuariosDelte = async(req, res = response) => {
 
     const { id } = req.params;
 
+    // const uid = req.uid;
+
     //Borrar fisicamente: NO HACER DE ESTA MANERA YA QUE SE PUEDE PERDER INTEGRIDAD REFERENCIAL DE OTROS DATOS
     //const usuario = await Usuario.findByIdAndDelete( id );
     //res.json( usuario );
@@ -240,7 +242,11 @@ const usuariosDelte = async(req, res = response) => {
 
     //BORRAR CON ESTADO EN FALSE ( DESACTIVAR EL USUARIO ) MEDIANTE ACTUALIZACION EN LA BD
     const usuario = await Usuario.findByIdAndUpdate( id, { estado: false } );
-    res.json( usuario );
+    // const usuarioAutenticado = req.usuario;
+    // res.json({usuario, usuarioAutenticado});
+    res.json(usuario);
+
+    // res.json({ usuario, uid });
     // http://localhost:8080/api/usuarios/6282d8df0f03aa96554e1f0d        DELETE EN POSTMAN
     // SE ENVIA EL ID 6282d8df0f03aa96554e1f0d  <-- este un id de ejemplo
     // y se comprueba la actualizacion ya sea en la BD el estado o trayendo todo con un GET en postman
