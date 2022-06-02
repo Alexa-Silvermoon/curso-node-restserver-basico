@@ -31,6 +31,7 @@ const UsuarioSchema = Schema({
 
         type: String,
         required: true,
+        // default: 'USER_ROLE', //importante al momento crear usuario usando google
         emun: ['ADMIN_ROLE', 'USER_ROLE']
 
     },
