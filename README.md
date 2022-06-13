@@ -13,12 +13,29 @@ node app.js    o bien     nodemon app.js
 
 VERIFICAR EN CHROME O EN POSTMAN EL LOCALHOST:
 ```
-GET O POST http://localhost:8080/api/usuarios/
-PUT O DELETE http://localhost:8080/api/usuarios/XXXX ID XXXX
-
 http://localhost:8080/
-http://localhost:8080/api/usuarios?q=hola&nombre=alexander&apikey=123
-http://localhost:8080/api/usuarios?q=hola&apikey=123
-http://localhost:8080/api/usuarios?q=hola&apikey=123&page=1&limit=10
-http://localhost:8080/api/usuarios/10
+
+usuarios get o post:   http://localhost:8080/api/usuarios/
+usuarios put o delete: http://localhost:8080/api/usuarios/XXXX ID XXXX
+(en put o post no olvidar los campos del body)
+
+usuarios login: http://localhost:8080/api/auth/login
+usuario login google: http://localhost:8080/api/auth/google
+usuario login google en chrome: http://localhost:8080/
+
+categorias get o post:   http://localhost:8080/api/categorias/
+categorias obtener categoria por getid: http://localhost:8080/api/categorias/XXXX ID XXXX
+categorias put o delete: http://localhost:8080/api/categorias/XXXX ID XXXX
+(en put o post no olvidar los campos del body)
+
+productos get o post: http://localhost:8080/api/productos/
+productos obtener producto por getid: http://localhost:8080/api/productos/XXXX ID XXXX
+productos put o delete: http://localhost:8080/api/productos/XXXX ID XXXX
+(en put o post no olvidar los campos del body)
+
+buscar producto:  http://localhost:8080/api/buscar/productos/NOMBRE_DEL_PRODUCTO o ID_MONGO
+buscar usuario:   http://localhost:8080/api/buscar/usuarios/NOMBRE_DEL_USUARIO o CORREO
+buscar categoria: http://localhost:8080/api/buscar/categorias/NOMBRE_DE_CATEGORIA
+buscar producto-por-categoria: http://localhost:8080/api/buscar/producto-por-categoria/NOMBRE_DE_CATEGORIA
+
 ```

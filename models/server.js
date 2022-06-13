@@ -10,8 +10,17 @@ class Server {
         this.app = express();
         this.port = process.env.PORT; //desde app.js require('dotenv').config();// trae los del archivo .env
 
-        this.usuariosPath = '/api/usuarios';
-        this.authPath     = '/api/auth';
+        this.paths = {
+
+            auth:        '/api/auth',
+            buscar:      '/api/buscar',
+            categorias:  '/api/categorias',
+            productos:   '/api/productos',
+            usuarios:    '/api/usuarios'
+        }
+
+        // this.usuariosPath = '/api/usuarios';
+        // this.authPath     = '/api/auth';
 
         // Conectar a Base de Datos
         this.conectarDB();
@@ -45,8 +54,11 @@ class Server {
 
     routes(){
 
-        this.app.use( this.authPath, require('../routes/auth.js'));
-        this.app.use( this.usuariosPath, require('../routes/usuarios.js'));
+        this.app.use( this.paths.auth, require('../routes/auth.js'));
+        this.app.use( this.paths.buscar, require('../routes/buscar.js'));
+        this.app.use( this.paths.categorias, require('../routes/categorias.js'));
+        this.app.use( this.paths.productos, require('../routes/productos.js'));
+        this.app.use( this.paths.usuarios, require('../routes/usuarios.js'));
 
     }
 
@@ -54,13 +66,12 @@ class Server {
 
         this.app.listen(this.port, () => {
 
-            console.log('App corriendo en el puerto', this.port);
+            console.log('Servidor corriendo en el puerto', this.port);
 
         });
 
     }
     
-
 }
 
 module.exports = Server;
