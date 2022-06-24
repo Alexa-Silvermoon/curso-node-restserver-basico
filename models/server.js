@@ -1,6 +1,7 @@
 
 const express = require('express');// servidor express
 const cors = require('cors'); //autoriza o no paginas web que entren a mi server
+const fileUpload  = require('express-fileupload'); // carga de archivos
 const { dbConnection } = require('../database/config.js');
 
 class Server {
@@ -16,7 +17,8 @@ class Server {
             buscar:      '/api/buscar',
             categorias:  '/api/categorias',
             productos:   '/api/productos',
-            usuarios:    '/api/usuarios'
+            usuarios:    '/api/usuarios',
+            uploads:     '/api/uploads' //cargar archivos
         }
 
         // this.usuariosPath = '/api/usuarios';
@@ -50,6 +52,15 @@ class Server {
         this.app.use( express.static('public') );//.use me ayuda a saber de se trata de un middleware
         //apuntando a la carpeta publica, es decir al index.html
 
+        //FileUplad - carga de archivos
+        this.app.use( fileUpload({
+
+            useTempFiles : true, //archivos temporales
+            tempFileDir : '/tmp/',
+            createParentPath: true //crear carpetas segun se necesite
+
+        }));
+
     }
 
     routes(){
@@ -59,6 +70,7 @@ class Server {
         this.app.use( this.paths.categorias, require('../routes/categorias.js'));
         this.app.use( this.paths.productos, require('../routes/productos.js'));
         this.app.use( this.paths.usuarios, require('../routes/usuarios.js'));
+        this.app.use( this.paths.uploads, require('../routes/uploads.js'));
 
     }
 

@@ -38,6 +38,8 @@ const ProductoSchema = Schema({
         required: true
     },
 
+    img:{ type: String},
+
     usuario:{ //para grabar un producto, tambien se debe saber que usuario mando a guardarlo
 
         type: Schema.Types.ObjectId,
